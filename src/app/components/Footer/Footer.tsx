@@ -63,13 +63,13 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ socials }, ref) => {
                     <div className='border-b-thin lg:border-b-0 pb-5'>
                         <p className='mb-5 flex gap-3'><span>You can find all relevant documents below.</span></p>
                         <ul className='flex flex-col gap-4'>
-                            <li className='italic pl-1 text-sm flex justify-between'>General English (Intro) full track</li>
-                            <li className='italic pl-1 text-sm flex justify-between'>Al-Huda bank</li>
-                            <li className='italic pl-1 text-sm flex justify-between'>(Microsoft Office 2016) Certificate of Participation</li>
-                            <li className='italic pl-1 text-sm flex justify-between'>(Fundamentals of Letters of Credit and Bank Guarantees course) Certificate of Participation</li>
-                            <li className='italic pl-1 text-sm flex justify-between'>(New SWIFT Messages course) Certificate of Participation</li>
-                            <li className='italic pl-1 text-sm flex justify-between'>(MX Training) Al-Huda bank</li>
-                            <li className='italic pl-1 text-sm flex justify-between'>(Cybersecurity Analyst) Certificate of Participation at Central bank of Iraq</li>
+                            <li onClick={() => window.open('/images/docs/General.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>General English (Intro) full track</li>
+                            <li onClick={() => window.open('/images/docs/Al-Huda.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>Al-Huda bank</li>
+                            <li onClick={() => window.open('/images/docs/Microsoft.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>(Microsoft Office 2016) Certificate of Participation</li>
+                            <li onClick={() => window.open('/images/docs/Fundamentals.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>(Fundamentals of Letters of Credit and Bank Guarantees course) Certificate of Participation</li>
+                            <li onClick={() => window.open('/images/docs/SWIFT.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>(New SWIFT Messages course) Certificate of Participation</li>
+                            <li onClick={() => window.open('/images/docs/MX.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>(MX Training) Al-Huda bank</li>
+                            <li onClick={() => window.open('/images/docs/Cybersecurity.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 text-sm flex justify-between'>(Cybersecurity Analyst) Certificate of Participation at Central bank of Iraq</li>
                         </ul>
                     </div> 
                 </div>
