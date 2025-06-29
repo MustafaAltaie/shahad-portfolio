@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { BriefcaseIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import { Exp } from '../../../../types/Experiences';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface ExperienceProps {
     exp: Exp
@@ -17,12 +18,21 @@ const Experience = ({ exp }: ExperienceProps) => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.2 }}
         >
+            <div className='flex gap-4'>
+                <Image
+                    className='min-w-[50px] object-contain'
+                    src={exp.company.includes('Baghdad Bank') ? '/images/baghdadBankLogo.png' : exp.company.includes('Huda') ? '/images/alhudaLogo.png' : '/images/experience.png'}
+                    alt='Logo'
+                    width={50}
+                    height={50}
+                    loading='lazy'
+                />
+                <p>{exp.title} in <span className='italic mainColor'>{exp.company}</span></p>
+            </div>
             <div className='flex gap-5 items-center justify-between'>
-                <BriefcaseIcon className='w-7 mainBgColor text-white rounded-full p-1.5' />
+                <p className='mainColor font-bold'>{exp.location}</p>
                 <p className='text-sm mainColor font-bold'>{exp.dateFrom} - {exp.dateTo ? exp.dateTo : 'Present'}</p>
             </div>
-            <p className='text-lg'>{exp.title} in <span className='italic'>{exp.company}</span></p>
-            <p className='mainColor'>{exp.location}</p>
             <ul className='text-sm list-disc pl-3'>
                 {exp.description
                 ?.split('-')
