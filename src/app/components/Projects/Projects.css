@@ -1,0 +1,77 @@
+.projects {
+    background-image: url('/images/nodejs.png');
+    border-top: solid 0.5px;
+    overflow-x: hidden;
+}
+.projectWrapper {
+    gap: 20px;
+}
+.darkMode .project {
+    background: #1f1f1f;
+}
+.lightMode .project {
+    background: #e1e1e1;
+}
+.darkMode .project h1 {
+    color: #08b;
+}
+.lightMode .project h1 {
+    color: #a70;
+}
+.project ul > li {
+    font-size: 12px;
+}
+.darkMode .project ul > li {
+    background: #6f4411;
+    color: #ffffffaa;
+}
+.lightMode .project ul > li {
+    background: #58b;
+    color: #fff;
+}
+
+.projectMark {
+    top: -7px;
+    clip-path: polygon(-30% -30%, 130% -30%, 100% 100%, 50% 80%, 0 100%);
+}
+.darkMode .projectMark {
+    background: #058;
+}
+.lightMode .projectMark {
+    background: #08d;
+    color: white;
+}
+.projectMark::before,
+.projectMark::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    transform: translateX(-99%);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.projectMark::after {
+    left: unset;
+    right: 0;
+    transform: translateX(99%);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+.darkMode .projectMark::before,
+.darkMode .projectMark::after {
+    background: #640;
+}
+.lightMode .projectMark::before,
+.lightMode .projectMark::after {
+    background: #111;
+}
+
+@media (min-width: 1024px) {
+    .projects {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .project {
+        width: calc(100%/3 - 40px/3);
+    }
+}

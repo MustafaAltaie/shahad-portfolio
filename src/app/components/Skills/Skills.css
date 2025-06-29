@@ -1,0 +1,87 @@
+.skills {
+    background-image: url('/images/skills.png');
+    overflow-x: hidden;
+}
+.skills img {
+    min-width: 25px;
+}
+.frontendSkillWrapper,
+.backendSkillWrapper,
+.otherSkillWrapper {
+    gap: 10px;
+}
+.frontendSkillWrapper .skillCard,
+.backendSkillWrapper .skillCard,
+.otherSkillWrapper .skillCard,
+.frontendSkillWrapper .skillCardTemp,
+.backendSkillWrapper .skillCardTemp,
+.otherSkillWrapper .skillCardTemp {
+    width: calc(100%/3 - 20px/3);
+}
+.darkMode .skillCard {
+    background-color: #151515;
+    border: solid 0.7px #555;
+    border-left: solid 5px #555;
+}
+.lightMode .skillCard {
+    background-color: #e1e1e1;
+    border: solid 0.7px #aaa;
+    border-left: solid 5px #aaa;
+}
+.darkMode .skillLevel {
+    background: #ffffff22;
+}
+.skillLevel {
+    overflow: hidden;
+    border-radius: 5px;
+}
+.skillLevel > div {
+    height: 100%;
+}
+.darkMode .skillLevel > div {
+    background: #960;
+}
+.lightMode .skillLevel {
+    background: #00000022;
+}
+.lightMode .skillLevel > div {
+    background: #07a;
+}
+
+
+/* Settings */
+.darkMode .skillSettingsWrapper > div {
+    background: #333333dd;
+}
+.lightMode .skillSettingsWrapper > div {
+    background: #eeeeeedd;
+}
+.darkMode .skillCardTemp {
+    background-color: #111;
+    border: dashed 0.7px;
+    border-left: solid 5px #555;
+}
+.lightMode .skillCardTemp {
+    background-color: #eee;
+    border: dashed 0.7px;
+    border-left: solid 5px #aaa;
+}
+
+@media (min-width: 1024px) {
+    .skills {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .frontendSkillWrapper .skillCard,
+    .frontendSkillWrapper .skillCardTemp {
+        width: calc(100%/5 - 40px/5);
+    }
+    .backendSkillWrapper .skillCard,
+    .backendSkillWrapper .skillCardTemp {
+        width: calc(100%/5 - 40px/5);
+    }
+    .otherSkillWrapper .skillCard,
+    .otherSkillWrapper .skillCardTemp {
+        width: calc(100%/6 - 50px/6);
+    }
+}

@@ -1,0 +1,27 @@
+header {
+    overflow-x: hidden;
+    border-bottom: solid 0.5px;
+}
+header li {
+    border-top: solid 0.5px;
+}
+header .navToggle > div {
+    height: 1px;
+}
+.darkMode header .navToggle > div {
+    background: #fff;
+}
+.lightMode header .navToggle > div {
+    background: #000;
+}
+
+
+/* Laptop */
+@media (min-width: 1024px) {
+    header li {
+        border-top: none;
+    }
+    header nav {
+        border-bottom: none;
+    }
+}

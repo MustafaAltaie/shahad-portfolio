@@ -1,0 +1,32 @@
+.experiences {
+    background-image: url('/images/experience.png');
+    overflow-x: hidden;
+}
+.expWrapper {
+    gap: 20px;
+}
+.darkMode .experienceCard {
+    background-color: #2a2a2acc;
+}
+.lightMode .experienceCard {
+    background-color: #ddddddaa;
+    border: solid 0.7px #00000055;
+}
+.darkMode .expTech {
+    color: #c90;
+    border: solid 0.7px #cc990088;
+}
+.lightMode .expTech {
+    color: #059;
+    border: solid 0.5px #00559988;
+}
+
+@media (min-width: 1024px) {
+    .experiences {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .experienceCard {
+        width: calc(100%/2 - 20px/2);
+    }
+}

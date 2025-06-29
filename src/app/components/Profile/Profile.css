@@ -1,0 +1,24 @@
+.section1 {
+    border-bottom: solid 0.5px;
+}
+.mainImageWrapper {
+    height: 75vh;
+}
+.lightMode .mainImageWrapper > img {
+    filter: brightness(130%) contrast(90%);
+}
+.profileWrapper {
+    border-top: solid 0.5px;
+}
+
+@media (min-width: 1024px) {
+    .mainImageWrapper {
+        height: unset;
+    }
+    .mainImageWrapper > img {
+        height: 450px;
+    }
+    .profileWrapper {
+        border-top: none;
+    }
+}

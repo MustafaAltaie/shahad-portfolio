@@ -1,0 +1,65 @@
+.educations {
+    background-image: url('/images/education.png');
+}
+.educationWrapper {
+    gap: 20px;
+}
+.educationCard {
+    border-radius: 20px 0 20px 20px;
+}
+.educationDate {
+    top: 11px;
+    right: -12.7px;
+    padding: 5px 30px;
+    clip-path: polygon(0 0, 120% -50%, 120% 150%, 0 100%, 15px 50%);
+}
+.educationDate::before,
+.educationDate::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: 0;
+}
+.darkMode .educationDate::before,
+.darkMode .educationDate::after {
+    background: #049;
+}
+.lightMode .educationDate::before,
+.lightMode .educationDate::after {
+    background: #555;
+}
+.educationDate::before {
+    top: 0;
+    transform: translateY(-100%);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+.educationDate::after {
+    bottom: 0;
+    transform: translateY(100%);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.darkMode .educationDate {
+    background: #862;
+    color: #ddd;
+}
+.lightMode .educationDate {
+    background: #db7;
+}
+.darkMode .educationCard {
+    background-color: #2a2a2acc;
+}
+.lightMode .educationCard {
+    background-color: #ddddddaa;
+}
+
+
+@media (min-width: 1024px) {
+    .educations {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .educationCard {
+        width: calc(100%/2 - 20px/2)
+    }
+}
