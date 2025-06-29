@@ -9,7 +9,7 @@ import { useReadProfileQuery } from "../../features/profile/profileApi";
 import { useReadExpsQuery } from "../../features/experiences/experienceApi";
 import { useReadOtherSkillsQuery } from "../../features/skills/skillsApi";
 import { useReadSocialQuery } from "../../features/footer/socialApi";
-import WaitingModal from "./dashboard/WaitingModal";
+import WaitingModal from "./dashboard-shahad-zangana-1993-secret/WaitingModal";
 import Educations from "./components/Educations/Educations";
 
 
