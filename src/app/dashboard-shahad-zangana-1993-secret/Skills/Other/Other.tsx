@@ -61,7 +61,7 @@ const Other = () => {
     }
 
      const handleDelete = async (skill: FSkill) => {
-        const confirmed = confirm('Delete experience?');
+        const confirmed = confirm('Delete Skill?');
         if (!confirmed) return;
         try {
             setBusy(true);
