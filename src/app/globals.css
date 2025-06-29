@@ -31,6 +31,13 @@ img {
     align-items: center;
 }
 
+.mainColor {
+    color: #8f55bb;
+}
+.mainBgColor {
+    background: #8f55bb;
+}
+
 .centeredY {
     position: absolute;
     top: 50%;
