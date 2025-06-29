@@ -48,10 +48,6 @@ const SocialForm = ({
                     Email
                     <input type="email" placeholder='e.g name@gmail.com' autoComplete='email' name='email' value={social.email} onChange={prepareSocial} />
                 </label>
-                <label>
-                    Github
-                    <input type="text" autoComplete='off' title='Just add the username without https://github/' placeholder='github user name' name='github' value={social.github} onChange={prepareSocial} />
-                </label>
                 <button
                     type='submit'
                     style={{ background: busy ? '#888' : '' }}

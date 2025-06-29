@@ -12,6 +12,12 @@
     background-color: #ddddddaa;
     border: solid 0.7px #00000055;
 }
+.darkMode .coreSystemText {
+    color: #0af;
+}
+.lightMode .coreSystemText {
+    color: #740;
+}
 .darkMode .expTech {
     color: #c90;
     border: solid 0.7px #cc990088;

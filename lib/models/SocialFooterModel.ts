@@ -6,7 +6,6 @@ const socialSchema = new Schema<SocialObj>({
     linkedIn: { type: String },
     mobile: { type: String },
     email: { type: String },
-    github: { type: String },
 });
 
 const Social = models.Social || model('Social', socialSchema);

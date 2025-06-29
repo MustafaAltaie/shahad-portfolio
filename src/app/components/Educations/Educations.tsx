@@ -37,7 +37,7 @@ const Educations = forwardRef<HTMLElement, EducationsProps>((_, ref) => {
                 <h1 className='text-2xl text-yellow-600'>Educations</h1>
             </div>
             {/* Educations */}
-            <div className='educationWrapper flex flex-col lg:flex-row lg:flex-wrap lg:items-start'>
+            <div className='educationWrapper flex flex-col lg:flex-row lg:flex-wrap'>
                 {/* card */}
                 {educationList.map(education =>
                 <Education key={education.id} education={education} />)}

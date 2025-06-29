@@ -10,6 +10,8 @@ import { useReadExpsQuery } from "../../features/experiences/experienceApi";
 import { useReadOtherSkillsQuery } from "../../features/skills/skillsApi";
 import { useReadSocialQuery } from "../../features/footer/socialApi";
 import WaitingModal from "./dashboard/WaitingModal";
+import Educations from "./components/Educations/Educations";
+
 
 const Home = () => {
   const { data: profile, isLoading: proLoading } = useReadProfileQuery();
@@ -40,6 +42,7 @@ const Home = () => {
         scrollToContact={scrollToContact}
       />
       <Profile profile={profile?.profile} />
+      <Educations ref={educationRef} />
       <Experiences experiences={experiences} ref={experienceRef} />
       <Skills other={other} ref={skillRef} />
       <Footer socials={socials} ref={contactRef} />

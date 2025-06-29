@@ -24,7 +24,6 @@ const Other = ({ other }: OtherProps) => {
 
     return (
         <div className='mt-5'>
-            <h1 className='text-xl mb-3'>Other skills</h1>
             <div className='otherSkillWrapper flex flex-wrap'>
                 {otherSkills.map((skill: FSkill) => 
                 <Skill key={skill.id} skill={skill} />

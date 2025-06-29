@@ -43,7 +43,8 @@ const Experience = ({ exp, setObj, setForm, setScrolled }: ExperienceProps) => {
             <p>{exp.title} in <span className='italic'>{exp.company}</span></p>
             <p className='text-yellow-600'>{exp.location}</p>
             <p className='text-sm text-neutral-500'>{exp.description}</p>
-            {exp.techStack?.length !== 0 && <p className='mt-1 text-sm flex items-end gap-1'>I worked with the following tech stack <ArrowLongRightIcon className='w-4' /></p>}
+            {exp.techStack?.length !== 0 &&
+            <p className='mt-1 text-sm flex items-end gap-1'>My job involves working with these core systems<ArrowLongRightIcon className='w-4' /></p>}
             <div className='flex flex-wrap gap-2'>
                 {exp.techStack?.map((tech: string) => 
                 <p key={tech} className='expTech px-2 py-1 rounded-xl text-sm'>{tech}</p>

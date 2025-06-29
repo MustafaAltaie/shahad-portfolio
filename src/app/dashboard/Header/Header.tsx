@@ -4,7 +4,7 @@ import '../../components/Header/Header.css';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 
 const Header = () => {
-    const liList: string[] = ['Home', 'Educations', 'Experiences', 'Skills', 'Contact'];
+    const liList: string[] = ['Home', 'Educations', 'Experiences', 'Skills', 'Documents'];
     const [dark, setDark] = useState(true);
     const [hideNav, setHideNav] = useState(false);
     const [hasMonted, setHasMounted] = useState(false);
@@ -33,7 +33,7 @@ const Header = () => {
         <header className='flex flex-col lg:flex-row lg:justify-between fixed w-full z-10 lg:px-5'>
             <div className='p-5'>
                 <div className='logoWrapper flex items-center justify-between gap-10'>
-                    <p className='text-lg'>Mustafa <span className='text-yellow-600'>Altaie</span></p>
+                    <p className='text-lg'>Shahad <span className='text-yellow-600'>Nazim</span></p>
                     <div className='flex gap-5 items-center'>
                         <div className="flex gap-2">
                             <SunIcon className='w-5 text-yellow-600 cursor-pointer' onClick={() => setDark(false)} />

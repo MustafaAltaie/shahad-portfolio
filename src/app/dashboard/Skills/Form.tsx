@@ -25,10 +25,6 @@ const Form = ({ form, setForm, skillObj, setSkillObj, clearSkillObj, handleSave 
         }
     }, [form, formRef]);
 
-    useEffect(() => {
-        console.log(skillObj)
-    }, [skillObj]);
-
     return (
         <form ref={formRef} onSubmit={handleSave} className='h-0'>
             <h1 className='w-fit ml-auto px-5 pt-3'>

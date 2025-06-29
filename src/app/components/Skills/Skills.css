@@ -2,21 +2,12 @@
     background-image: url('/images/skills.png');
     overflow-x: hidden;
 }
-.skills img {
-    min-width: 25px;
-}
-.frontendSkillWrapper,
-.backendSkillWrapper,
 .otherSkillWrapper {
     gap: 10px;
 }
-.frontendSkillWrapper .skillCard,
-.backendSkillWrapper .skillCard,
 .otherSkillWrapper .skillCard,
-.frontendSkillWrapper .skillCardTemp,
-.backendSkillWrapper .skillCardTemp,
 .otherSkillWrapper .skillCardTemp {
-    width: calc(100%/3 - 20px/3);
+    width: calc(100%/2 - 10px/2);
 }
 .darkMode .skillCard {
     background-color: #151515;
@@ -72,16 +63,8 @@
         width: 80%;
         margin: 0 auto;
     }
-    .frontendSkillWrapper .skillCard,
-    .frontendSkillWrapper .skillCardTemp {
-        width: calc(100%/5 - 40px/5);
-    }
-    .backendSkillWrapper .skillCard,
-    .backendSkillWrapper .skillCardTemp {
-        width: calc(100%/5 - 40px/5);
-    }
     .otherSkillWrapper .skillCard,
     .otherSkillWrapper .skillCardTemp {
-        width: calc(100%/6 - 50px/6);
+        width: calc(100%/4 - 30px/4);
     }
 }

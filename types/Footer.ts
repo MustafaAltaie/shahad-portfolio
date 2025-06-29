@@ -3,7 +3,6 @@ export interface SocialObj {
     linkedIn?: string
     mobile?: string
     email?: string
-    github?: string
 }
 
 export interface Message {
