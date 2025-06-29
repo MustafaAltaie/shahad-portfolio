@@ -19,12 +19,12 @@ const Section1 = ({ profile }: Section1Props) => {
 
     return (
         <section className='section1 overflow-x-hidden flex flex-col lg:flex-row'>
-            <div className="mainImageWrapper flex items-end lg:items-end justify-center overflow-hidden lg:w-1/2">
+            <div className="mainImageWrapper flex items-end lg:items-end justify-center overflow-hidden lg:w-1/2 pt-15">
                 <Image
                     className='lg:object-contain'
                     src='/images/shahad.jpg'
                     alt='homeImage'
-                    width={350}
+                    width={500}
                     height={400}
                     priority
                 />
@@ -39,7 +39,7 @@ const Section1 = ({ profile }: Section1Props) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true, amount: 0 }}
-                >{text || 'I am a fullstack JavaScript developer focused on building scalable and responsive web applications using Next.js with TypeScript and the MERN stack (MongoDB, Express, React, Node.js). I write clean, optimized code that follows best practices, and I work with modern tools like Tailwind CSS, Next.js, and TypeScript. I am always eager to learn new technologies and quickly adapt to new challenges.'}</motion.p>
+                >{text}</motion.p>
             </div>
         </section>
     )

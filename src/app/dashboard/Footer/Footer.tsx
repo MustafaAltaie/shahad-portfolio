@@ -3,10 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../../components/Footer/Footer.css';
 import SocialForm from './SocialForm';
 import { SocialObj, Message } from '../../../../types/Footer';
-import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
-import DocForm from './DocForm';
+import { PencilIcon } from '@heroicons/react/24/outline';
 import { useUpdateSocialMutation, useReadSocialQuery } from '../../../../features/footer/socialApi';
-import { useUploadFooterDocMutation, useReadFooterDocsQuery, useDeleteFooterDocMutation } from '../../../../features/footer/docsApi';
 import WaitingModal from '../WaitingModal';
 
 const Footer = () => {
@@ -23,15 +21,8 @@ const Footer = () => {
     });
     const [socialForm, setSocialForm] = useState(false);
     const socialFormRef = useRef<HTMLFormElement | null>(null);
-    const [docForm, setDocForm] = useState(false);
-    const DocFormRef = useRef<HTMLFormElement | null>(null);
-    const [docName, setDocName] = useState<string>('');
-    const [docFile, setDocFile] = useState<File | null>(null);
     const [updateSocial] = useUpdateSocialMutation();
-    const [uploadFooterDoc] = useUploadFooterDocMutation();
-    const { data, isLoading } = useReadFooterDocsQuery();
     const { data: socials } = useReadSocialQuery();
-    const [deleteFooterDoc] = useDeleteFooterDocMutation();
     const [busy, setBusy] = useState(false);
 
     useEffect(() => {
@@ -39,8 +30,6 @@ const Footer = () => {
             setSocial(socials);
         }
     }, [socials]);
-
-    if (isLoading) return <p>...Loading documents</p>
 
     const handlePrepareMessage = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -69,42 +58,6 @@ const Footer = () => {
         } catch (err) {
             console.error(err);
             alert('Error saving social');
-        } finally {
-            setBusy(false);
-        }
-    }
-
-    const handleSaveDocs = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!docFile) return;
-        try {
-            setBusy(true);
-            const ext = docFile.name.includes('.') ?
-                docFile.name.substring(docFile.name.lastIndexOf('.')) :
-                '.png';
-            const newName = `${docName}${ext}`;
-            const renamedFile = new File([docFile], newName, { type: docFile.type });
-            const formData = new FormData();
-            formData.append('image', renamedFile);
-            await uploadFooterDoc(formData).unwrap();
-            setDocForm(false);
-            setDocFile(null);
-        } catch (err) {
-            console.error(err);
-            alert('Error saving document');
-        } finally {
-            setBusy(false);
-        }
-    }
-
-    const handleDeleteDocs = async (doc: string) => {
-        const rowName = doc.split('/').pop();
-        try {
-            setBusy(true);
-            await deleteFooterDoc(rowName!).unwrap();
-        } catch (err) {
-            console.error(err);
-            alert('Error deleting document');
         } finally {
             setBusy(false);
         }
@@ -171,29 +124,12 @@ const Footer = () => {
                 <div className='lg:flex items-center lg:border-b-1 lg:border-[#ffffff55] gap-10'>
                     {/* Documents */}
                     <div className='border-b-1 border-[#ffffff55] lg:border-b-0 pb-2 mb-2 lg:w-1/2 lg:border-r-1 pr-10'>
-                        <p className='mb-3 flex gap-3'><span>You can find all relevant documents below.</span>{!docForm && <PencilIcon className='w-5 lg:w-4 cursor-pointer' onClick={() => setDocForm(true)} />}</p>
+                        <p className='mb-3 flex gap-3'><span>You can find all relevant documents below.</span></p>
                         <ul className='flex flex-col gap-2'>
-                            {data?.map((doc, index) =>
-                                <li
-                                    key={index}
-                                    className='italic pl-1 text-sm flex justify-between'>{doc.split('/').pop()} <TrashIcon className='w-4'
-                                    onClick={() => handleDeleteDocs(doc)} title='Delete'
-                                /></li>)}
                             <li className='italic pl-1 text-sm flex justify-between'>Swedish Vocational Program (Full stack JS)</li>
                             <li className='italic pl-1 text-sm flex justify-between'>Personal Letter</li>
                         </ul>
                     </div>
-                    <DocForm
-                        DocFormRef={DocFormRef}
-                        handleSaveDocs={handleSaveDocs}
-                        docForm={docForm}
-                        setDocForm={setDocForm}
-                        docName={docName}
-                        setDocName={setDocName}
-                        setDocFile={setDocFile}
-                        docFile={docFile}
-                        busy={busy}
-                    />
                     {/* Middle */}
                     <div className='pb-2 border-b-1 border-[#ffffff55] lg:border-b-0 lg:w-1/2'>
                         <p className='mb-2 text-sm'>Have an idea or a job opportunity? Do not hesitate to get in touch — I am fluent in

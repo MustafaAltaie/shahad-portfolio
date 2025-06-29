@@ -3,25 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { FSkill } from '../../../../../types/Skills';
 import Skill from './Skill';
 import Form from '../Form';
-import { v4 as uuidv4 } from 'uuid';
 import SkillTemplate from '../SkillTemplate';
 import {
     useCreateOtherSkillMutation,
     useReadOtherSkillsQuery,
     useUpdateOtherSkillMutation,
-    useUploadOtherSkillIconMutation,
-    useChangeOtherSkillIconMutation,
     useDeleteOtherSkillMutation,
-    useDeleteOtherSkillIconMutation,
 } from '../../../../../features/skills/skillsApi';
 import WaitingModal from '../../WaitingModal';
 
-interface OtherProps {
-    setFolder: React.Dispatch<React.SetStateAction<string>>
-    folder: string
-}
-
-const Other = ({  setFolder, folder }: OtherProps) => {
+const Other = () => {
     const [other, setOther] = useState<FSkill[]>([]);
     const [form, setForm] = useState(false);
     const [skillObj, setSkillObj] = useState<FSkill>({
@@ -30,15 +21,10 @@ const Other = ({  setFolder, folder }: OtherProps) => {
         title: '',
         level: '',
     });
-    const [fileImage, setFileImage] = useState<File | null>(null);
     const [createOtherSkill] = useCreateOtherSkillMutation();
     const { data, isLoading, isError } = useReadOtherSkillsQuery();
-    const [uploadOtherSkillIcon] = useUploadOtherSkillIconMutation();
     const [updateOtherSkill] = useUpdateOtherSkillMutation();
-    const [changeOtherSkillIcon] = useChangeOtherSkillIconMutation();
     const [deleteOtherSkill] = useDeleteOtherSkillMutation();
-    const [deleteOtherSkillIcon] = useDeleteOtherSkillIconMutation();
-    const [oldName, setOldName] = useState<string>('');
     const [busy, setBusy] = useState(false);
 
     useEffect(() => {
@@ -58,32 +44,12 @@ const Other = ({  setFolder, folder }: OtherProps) => {
 
     const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let imageLink = fileImage?.name || skillObj.imageLink;
         try {
             setBusy(true);
-            if (fileImage) {
-                const ext = fileImage.name.includes('.') ?
-                    fileImage.name.lastIndexOf('.') :
-                    '.png';
-                const newName = `${uuidv4()}${ext}`;
-                const renamedFile = new File([fileImage], newName, { type: fileImage.type });
-                const formData = new FormData();
-                formData.append('image', renamedFile);
-                imageLink = newName;
-                if (skillObj.id) {
-                    await changeOtherSkillIcon({ formData, oldImage: oldName }).unwrap();
-                } else {
-                    await uploadOtherSkillIcon(formData).unwrap();
-                }
-            }
-            const newItem: FSkill = {
-                ...skillObj,
-                imageLink
-            }
             if (skillObj.id) {
-                await updateOtherSkill({ id: skillObj.id, data: newItem }).unwrap();
+                await updateOtherSkill({ id: skillObj.id, data: skillObj }).unwrap();
             } else {
-                await createOtherSkill(newItem).unwrap();
+                await createOtherSkill(skillObj).unwrap();
             }
             clearSkillObj();
         } catch (err) {
@@ -97,7 +63,6 @@ const Other = ({  setFolder, folder }: OtherProps) => {
      const handleDelete = async (skill: FSkill) => {
         try {
             setBusy(true);
-            if (skill.imageLink) await deleteOtherSkillIcon(skill.imageLink).unwrap();
             await deleteOtherSkill(skill.id!).unwrap();
         } catch (err) {
             console.log(err);
@@ -114,7 +79,6 @@ const Other = ({  setFolder, folder }: OtherProps) => {
             title: '',
             level: '',
         });
-        setFileImage(null);
     }
 
     return (
@@ -128,16 +92,13 @@ const Other = ({  setFolder, folder }: OtherProps) => {
                     skill={skill}
                     setForm={setForm}
                     setSkillObj={setSkillObj}
-                    setOldName={setOldName}
                     handleDelete={handleDelete}
-                    setFolder={setFolder}
                 />)}
                 {!skillObj.id &&
                 <SkillTemplate
                     form={form}
                     setForm={setForm}
                     skillObj={skillObj}
-                    fileImage={fileImage}
                 />}
             </div>
             <Form
@@ -145,11 +106,8 @@ const Other = ({  setFolder, folder }: OtherProps) => {
                 setForm={setForm}
                 skillObj={skillObj}
                 setSkillObj={setSkillObj}
-                fileImage={fileImage}
-                setFileImage={setFileImage}
                 clearSkillObj={clearSkillObj}
                 handleSave={handleSave}
-                folder={folder}
             />
         </div>
     )

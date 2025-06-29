@@ -1,7 +1,7 @@
 'use client';
 import React, { forwardRef, useEffect, useState } from 'react';
 import './Projects.css';
-import { CodeBracketIcon, ArrowLongRightIcon, BriefcaseIcon } from '@heroicons/react/24/solid';
+import { CodeBracketIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import { ProjectType } from '../../../../types/Projects';
 import Project from './Project';
 import { motion } from 'framer-motion';
@@ -34,8 +34,6 @@ const Projects = forwardRef<HTMLElement, ProjectProps>(({ projects }, ref) => {
                 <CodeBracketIcon className='w-7 text-yellow-600' />
                 <h1 className='text-2xl text-yellow-600 font-bold'>My projects</h1>
             </div>
-            <p className='flex gap-1'>* Projects with <BriefcaseIcon className='w-4' /> indicate professional work.</p>
-            <p className='opacity-50 mb-2'>* Click any card to expand full details</p>
             {/* wrapper */}
             <div className='projectWrapper flex flex-wrap'>
                 {/* card */}

@@ -1,10 +1,7 @@
 'use client';
 import React, { useState, useEffect, forwardRef } from 'react';
 import './Footer.css';
-import { SocialObj, Message } from '../../../../types/Footer';
-import { useReadFooterDocsQuery } from '../../../../features/footer/docsApi';
-import { useSendContactEmailMutation } from '../../../../features/contact/contactApi';
-import WaitingModal from '@/app/dashboard/WaitingModal';
+import { SocialObj } from '../../../../types/Footer';
 
 interface FooterProps {
     socials: SocialObj | undefined
@@ -17,23 +14,8 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ socials }, ref) => {
             email: '',
             github: '',
         });
-    const { data, isLoading } = useReadFooterDocsQuery();
 
     // Contact
-    
-    const [formData, setFormData] = useState<Message>({
-        name: '',
-        email: '',
-        message: '',
-    });
-
-    const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    const [successMsg, setSuccessMsg] = useState<string>('');
-    const [errorMsg, setErrorMsg] = useState<string>('');
-    const [disableButton, setDisableButton] = useState(false);
-    const [sendContactEmail] = useSendContactEmailMutation();
-    const [busy, setBusy] = useState(false);
 
     useEffect(() => {
         if (socials) {
@@ -41,55 +23,8 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ socials }, ref) => {
         }
     }, [socials]);
 
-    if (isLoading) return <p>...Loading documents</p>
-
-    // contact
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev, [name]: value
-        }));
-    }
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setSuccessMsg('');
-        setErrorMsg('');
-
-        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-            setErrorMsg('All fields are required.');
-            return;
-        }
-
-        if (!formData.email || !isValidEmail(formData.email)) {
-            setErrorMsg('Enter a valid email.');
-            return;
-        }
-
-        setDisableButton(true);
-
-        try {
-            setBusy(true);
-            await sendContactEmail(formData).unwrap();
-            setSuccessMsg('Message sent!');
-            setFormData({ name: '', email: '', message: '' });
-        } catch (err) {
-            console.error(err);
-            setErrorMsg('Could not send the message.');
-        } finally {
-            setDisableButton(false);
-            setTimeout(() => {
-                setSuccessMsg('');
-                setErrorMsg('');
-            }, 3000);
-            setBusy(false);
-        }
-    }
-
     return (
         <footer ref={ref} className='bg-black px-10'>
-            {busy && <WaitingModal />}
             <div>
                 {/* Upper */}
                 <div className='fotterUpper flex gap-5 justify-center p-3 lg:p-2 border-b-thin mb-2 mt-2'>
@@ -140,12 +75,6 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ socials }, ref) => {
                     <div className='border-b-1 border-[#ffffff55] lg:border-b-0 pb-2 mb-2 lg:w-1/2 lg:border-r-1 pr-10'>
                         <p className='mb-3 flex gap-3'><span>You can find all relevant documents below.</span></p>
                         <ul className='flex flex-col gap-2'>
-                            {data?.map(doc =>
-                                <li
-                                    key={doc}
-                                    className='italic pl-1 text-sm'
-                                    onClick={() => window.open(`https://res.cloudinary.com/dswmp2omq/image/upload/${encodeURIComponent(doc)}`)}
-                                >{doc.split('/').pop()}</li>)}
                             <li className='italic pl-1 text-sm flex justify-between'>Swedish Vocational Program (Full stack JS)</li>
                             <li className='italic pl-1 text-sm flex justify-between'>Personal Letter</li>
                         </ul>
@@ -157,18 +86,6 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ socials }, ref) => {
                             <span>Swedish</span> and
                             <span> Arabic.</span>
                         </p>
-                        <form onSubmit={handleSubmit} className='contactForm flex flex-col gap-2 lg:gap-1 mb-2 lg:w-1/2'>
-                            <input className='p-2 rounded-lg lg:p-1 text-sm' type="text" name='name' placeholder='Name' value={formData.name} onChange={handleChange} />
-                            <input className='p-2 rounded-lg lg:p-1 text-sm' type="text" name='email' placeholder='Email' value={formData.email} onChange={handleChange} />
-                            <textarea className='p-2 rounded-lg lg:p-1 text-sm' name="message" placeholder='Message' value={formData.message} onChange={handleChange}></textarea>
-                            <button
-                                type='submit'
-                                className='bg-blue-800 p-2 text-white rounded-lg text-sm'
-                                style={disableButton ? { background: '#888', pointerEvents: 'none' } : { background: '', pointerEvents: 'unset' }}
-                            >Send</button>
-                        </form>
-                        {successMsg && <h6 style={{ color: 'green', position: 'absolute', bottom: '10px' }}>{successMsg}</h6>}
-                        {errorMsg && <h6 style={{ color: 'red', position: 'absolute', bottom: '10px' }}>{errorMsg}</h6>}
                     </div>  
                 </div>
                 {/* Lower */}

@@ -7,6 +7,5 @@ export interface EducationType {
     school: string
     title: string
     description?: string
-    logoLink?: string
-    docLink?: string
+    image: string
 }

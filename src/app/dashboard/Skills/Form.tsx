@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { TrashIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { FSkill } from '../../../../types/Skills';
 
 interface FormProps {
@@ -8,14 +7,11 @@ interface FormProps {
     setForm: React.Dispatch<React.SetStateAction<boolean>>
     skillObj: FSkill
     setSkillObj: React.Dispatch<React.SetStateAction<FSkill>>
-    fileImage: File | null
-    setFileImage: React.Dispatch<React.SetStateAction<File | null>>
     clearSkillObj: () => void
     handleSave: (e: React.FormEvent<HTMLFormElement>) => void
-    folder: string
 }
 
-const Form = ({ form, setForm, skillObj, setSkillObj, fileImage, setFileImage, clearSkillObj, handleSave, folder }: FormProps) => {
+const Form = ({ form, setForm, skillObj, setSkillObj, clearSkillObj, handleSave }: FormProps) => {
     const formRef = useRef<HTMLFormElement | null>(null);
 
     useEffect(() => {
@@ -55,34 +51,6 @@ const Form = ({ form, setForm, skillObj, setSkillObj, fileImage, setFileImage, c
                         }));
                     }} />
                 </label>
-                <div className='labelImage'>
-                    <label>
-                        {fileImage ? 'Replace skill image icon' : 'Upload skill image icon'}
-                        <input type="file" accept='.png,.jpg,.bmp,.JPEG,.jpeg' onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
-                            const file = e.target.files?.[0];
-                            if (file) {
-                                setFileImage(file);
-                                setSkillObj((prev: FSkill) => ({
-                                    ...prev, imageLink: file.name
-                                }));
-                            }
-                        }} />
-                    </label>
-                    <div className='formImageWrapper'>
-                        <Image
-                            src={
-                                fileImage ?
-                                URL.createObjectURL(fileImage) :
-                                skillObj.id ?
-                                `https://res.cloudinary.com/dswmp2omq/image/upload/v1750622928/portfolio/skills/${folder}/${skillObj.imageLink}` :
-                                "/images/image-icon.png"}
-                            alt="image-icon"
-                            width={30}
-                            height={30}
-                        />
-                    </div>
-                    {fileImage && <TrashIcon className='w-5' onClick={() => setFileImage(null)} />}
-                </div>
                 <button type='submit' className={`${(!skillObj.title || !skillObj.level) ? '' : 'activeFormButton'}`}>{skillObj.id ? 'Update' : 'Save'}</button>
             </div>
         </form>

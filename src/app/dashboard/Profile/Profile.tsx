@@ -38,12 +38,12 @@ const Section1 = () => {
         <section className='section1 overflow-x-hidden flex flex-col lg:flex-row'>
             {isLoading && <WaitingModal />}
             {busy && <WaitingModal />}
-            <div className="mainImageWrapper flex items-end justify-center overflow-hidden lg:w-1/2">
+            <div className="mainImageWrapper flex items-end lg:items-end justify-center overflow-hidden lg:w-1/2 pt-15">
                 <Image
                     className='lg:object-contain'
-                    src='/images/empty.png'
+                    src='/images/shahad.jpg'
                     alt='homeImage'
-                    width={350}
+                    width={500}
                     height={400}
                     priority
                 />

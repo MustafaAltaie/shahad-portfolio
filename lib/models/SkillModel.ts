@@ -7,6 +7,4 @@ const skillSchema = new Schema<FSkill>({
     level: { type: String, required: true },
 });
 
-export const FrontendSkill = models.FrontendSkill || model('FrontendSkill', skillSchema);
-export const BackendSkill = models.BackendSkill || model('BackendSkill', skillSchema);
 export const OtherSkill = models.OtherSkill || model('OtherSkill', skillSchema);
