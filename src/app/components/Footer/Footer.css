@@ -11,10 +11,10 @@ footer *:not(span):not(button):not(i):not(li) {
     border-top: solid 0.5px #ffffff77;
 }
 .fotterUpper > a > div {
-    background: #a40;
+    background: #a50;
 }
 footer span {
-    color: #fa0;
+    color: #8f55bb;
     white-space: nowrap;
 }
 .darkMode form label,

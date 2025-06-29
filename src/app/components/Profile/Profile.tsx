@@ -31,8 +31,8 @@ const Section1 = ({ profile }: Section1Props) => {
             </div>
             <div className="profileWrapper p-7 lg:w-1/2 lg:p-30 border-b-1 lg:border-b-0">
                 <div className='flex items-center gap-2 pb-4 font-bold'>
-                    <h1><UserCircleIcon className='w-7 text-yellow-600' /></h1>
-                    <span className='text-2xl text-yellow-600'>Profile</span>
+                    <h1><UserCircleIcon className='w-7 text-[#8f55bb]' /></h1>
+                    <span className='text-2xl text-[#8f55bb]'>Profile</span>
                 </div>
                 <motion.p
                     initial={{ opacity: 0, x: -50 }}

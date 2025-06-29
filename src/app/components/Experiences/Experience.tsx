@@ -18,11 +18,11 @@ const Experience = ({ exp }: ExperienceProps) => {
             viewport={{ once: true, amount: 0.2 }}
         >
             <div className='flex gap-5 items-center justify-between'>
-                <BriefcaseIcon className='w-7 bg-blue-600 text-white rounded-full p-1.5' />
-                <p className='text-sm text-blue-500 font-bold'>{exp.dateFrom} - {exp.dateTo ? exp.dateTo : 'Present'}</p>
+                <BriefcaseIcon className='w-7 bg-[#8f55bb] text-white rounded-full p-1.5' />
+                <p className='text-sm text-[#8f55bb] font-bold'>{exp.dateFrom} - {exp.dateTo ? exp.dateTo : 'Present'}</p>
             </div>
             <p className='text-lg'>{exp.title} in <span className='italic'>{exp.company}</span></p>
-            <p className='text-yellow-600'>{exp.location}</p>
+            <p className='text-[#8f55bb]'>{exp.location}</p>
             <ul className='text-sm list-disc pl-3'>
                 {exp.description
                 ?.split('-')

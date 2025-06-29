@@ -40,11 +40,11 @@
     clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 .darkMode .educationDate {
-    background: #862;
+    background: #7040a0;
     color: #ddd;
 }
 .lightMode .educationDate {
-    background: #db7;
+    background: #bf85fb;
 }
 .darkMode .educationCard {
     background-color: #2a2a2acc;

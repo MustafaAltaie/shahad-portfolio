@@ -30,8 +30,8 @@ const Education = ({ education }: EducationProps) => {
                     />
                 </div>
                 <div>
-                    <h1 className='text-xl text-blue-500'>{education.school}</h1>
-                    <h3 className='text-sm text-yellow-600'>{education.title}</h3>
+                    <h1 className='text-xl text-[#8f55bb]'>{education.school}</h1>
+                    <h3 className='text-sm text-[#3076ac]'>{education.title}</h3>
                 </div>
             </div>
             <p className='text-sm'>{education.description}</p>

@@ -70,14 +70,14 @@ const Header = (props: HeaderProps) => {
         <header className='flex flex-col lg:flex-row lg:justify-between fixed w-full z-10 lg:px-5'>
             <div className='p-5'>
                 <div className='logoWrapper flex items-center justify-between gap-10'>
-                    <p className='text-lg'>Shahad <span className='text-yellow-600'>Nazim</span></p>
+                    <p className='text-lg'><span className='text-[#8f55bb]'>Shahad</span> Nazim Zangana</p>
                     <div className='flex gap-5 items-center'>
                         <div className="flex gap-2">
-                            <SunIcon className='w-5 text-yellow-600 cursor-pointer' onClick={() => setDark(false)} />
+                            <SunIcon className='w-5 text-[#8f55bb] cursor-pointer' onClick={() => setDark(false)} />
                             <div onClick={() => setDark(!dark)} className="noTouchAction w-9 h-6 relative rounded-full border-thin cursor-pointer">
-                                <div className={`bg-yellow-600 w-5 h-5 rounded-full centeredY transition-all ${!dark ? 'left-[1.2px]' : 'left-[13px]'}`}></div>
+                                <div className={`bg-[#8f55bb] w-5 h-5 rounded-full centeredY transition-all ${!dark ? 'left-[1.2px]' : 'left-[13px]'}`}></div>
                             </div>
-                            <MoonIcon className='w-5 text-yellow-600 cursor-pointer' onClick={() => setDark(true)}  />
+                            <MoonIcon className='w-5 text-[#8f55bb] cursor-pointer' onClick={() => setDark(true)}  />
                         </div>
                         <div className="navToggle flex flex-col gap-1.5 lg:hidden" onClick={() => setHideNav(!hideNav)}>
                             <div className={`w-6 transition-all duration-500 ${!hideNav ? 'transform translate-y-2 rotate-45' : ''}`}></div>

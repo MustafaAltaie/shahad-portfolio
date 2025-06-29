@@ -13,18 +13,18 @@
     border: solid 0.7px #00000055;
 }
 .darkMode .coreSystemText {
-    color: #0af;
+    color: #8f55bb;
 }
 .lightMode .coreSystemText {
-    color: #740;
+    color: #6040a0;
 }
 .darkMode .expTech {
     color: #c90;
     border: solid 0.7px #cc990088;
 }
 .lightMode .expTech {
-    color: #059;
-    border: solid 0.5px #00559988;
+    color: #6c45ab;
+    border: solid 0.5px #6c45ab;
 }
 
 @media (min-width: 1024px) {

@@ -33,8 +33,8 @@ const Educations = forwardRef<HTMLElement, EducationsProps>((_, ref) => {
     return (
         <section ref={ref} className='educations p-7 flex flex-col border-b-thin bg-url-fixed pb-10'>
             <div className='flex items-center gap-2 font-bold mb-5'>
-                <AcademicCapIcon className='w-7 text-yellow-600' />
-                <h1 className='text-2xl text-yellow-600'>Educations</h1>
+                <AcademicCapIcon className='w-7 text-[#8f55bb]' />
+                <h1 className='text-2xl text-[#8f55bb]'>Educations</h1>
             </div>
             {/* Educations */}
             <div className='educationWrapper flex flex-col lg:flex-row lg:flex-wrap'>
