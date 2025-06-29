@@ -14,7 +14,7 @@ footer *:not(span):not(button):not(i):not(li) {
     background: #a40;
 }
 footer span {
-    color: #d70;
+    color: #fa0;
     white-space: nowrap;
 }
 .darkMode form label,
@@ -31,7 +31,7 @@ footer form > textarea {
     outline: none;
 }
 footer li {
-    color: #888;
+    color: #bbb;
     border-left: solid 2px #555;
     cursor: pointer;
 }
