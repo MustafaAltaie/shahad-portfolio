@@ -61,6 +61,8 @@ const Other = () => {
     }
 
      const handleDelete = async (skill: FSkill) => {
+        const confirmed = confirm('Delete experience?');
+        if (!confirmed) return;
         try {
             setBusy(true);
             await deleteOtherSkill(skill.id!).unwrap();

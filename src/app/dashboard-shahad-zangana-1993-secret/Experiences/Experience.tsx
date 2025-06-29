@@ -18,6 +18,8 @@ const Experience = ({ exp, setObj, setForm, setScrolled }: ExperienceProps) => {
     const [busy, setBusy] = useState(false);
 
     const handleDelete = async (id: string) => {
+        const confirmed = confirm('Delete experience?');
+        if (!confirmed) return;
         try {
             setBusy(true);
             await deleteExp(id).unwrap();
