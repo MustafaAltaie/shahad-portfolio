@@ -10,7 +10,13 @@ const Skill = React.memo(({ skill }: SkillProps) => {
     return (
         <div className='skillCard p-3 flex flex-col gap-2 justify-between rounded-sm'>
             <div className='flex gap-1 items-center'>
-                <h1 className='text-[14px]'>{skill.title}</h1>
+                <motion.h1
+                    className='text-[14px]'
+                    initial={{ opacity: 0, scale: 1.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, ease:'linear' }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >{skill.title}</motion.h1>
             </div>
             <div className='skillLevel w-full h-1'>
                 <motion.div
