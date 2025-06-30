@@ -4,7 +4,7 @@ import Profile from "./components/Profile/Profile";
 import Experiences from "./components/Experiences/Experiences";
 import Skills from "./components/Skills/Skills";
 import Footer from "./components/Footer/Footer";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useReadProfileQuery } from "../../features/profile/profileApi";
 import { useReadExpsQuery } from "../../features/experiences/experienceApi";
 import { useReadOtherSkillsQuery } from "../../features/skills/skillsApi";
@@ -30,6 +30,20 @@ const Home = () => {
   const scrollToExperiences = () => experienceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const scrollToSkills = () => skillRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const scrollToContact = () => contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  useEffect(() => {
+    const storedScroll = localStorage.getItem('scrollAmount');
+    if (storedScroll) {
+      setTimeout(() => {
+        window.scrollTo({ behavior: 'smooth', top: JSON.parse(storedScroll) });
+      }, 1000)
+    }
+    const scrollAmount = () => {
+      localStorage.setItem('scrollAmount', JSON.stringify(window.scrollY));
+    }
+    window.addEventListener('scroll', scrollAmount);
+    return () => window.removeEventListener('scroll', scrollAmount);
+  }, []);
 
   if (isDataLoading) return <WaitingModal />
 
