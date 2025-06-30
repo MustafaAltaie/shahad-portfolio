@@ -45,12 +45,19 @@ const Header = (props: HeaderProps) => {
     const [dark, setDark] = useState(true);
     const [hideNav, setHideNav] = useState(false);
     const [hasMonted, setHasMounted] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setHasMounted(true);
         if(window.innerWidth < 1024) {
             setHideNav(true);
         }
+
+        const stored = localStorage.getItem('isDark');
+        if (stored) {
+            setDark(JSON.parse(stored));
+        }
+        setMounted(true);
     }, []);
 
     useEffect(() => {
@@ -62,6 +69,8 @@ const Header = (props: HeaderProps) => {
             bodyClasses.add('lightMode');
             bodyClasses.remove('darkMode');
         }
+        if (!mounted) return;
+        localStorage.setItem('isDark', JSON.stringify(dark));
     }, [dark]);
 
     if(!hasMonted) return null;
