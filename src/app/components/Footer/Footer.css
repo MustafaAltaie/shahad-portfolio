@@ -32,7 +32,6 @@ footer form > textarea {
 }
 footer li {
     color: #bbb;
-    border-left: solid 2px #555;
     cursor: pointer;
 }
 footer form {

@@ -2,7 +2,7 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import './Footer.css';
 import { SocialObj } from '../../../../types/Footer';
-import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
+import { ArrowLongRightIcon, DocumentIcon } from '@heroicons/react/24/solid';
 
 interface FooterProps {
     socials: SocialObj | undefined
@@ -66,13 +66,13 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ socials }, ref) => {
                         <p className='mb-2 flex gap-3'><span>You can find all relevant documents below.</span></p>
                         <p className='mb-3 flex gap-2 items-end' onClick={() => setArabic(!arabic)}>{arabic ? 'English' : 'عربي'} <ArrowLongRightIcon className='w-5' /></p>
                         <ul className='flex flex-col gap-4'>
-                            <li onClick={() => window.open('/images/docs/General.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'شهادة لغه انكليزية' : 'General English (Intro) full track'}</li>
-                            <li onClick={() => window.open('/images/docs/Al-Huda.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'مصرف الهدى' : 'Al-Huda bank'}</li>
-                            <li onClick={() => window.open('/images/docs/Microsoft.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'شهادة مشاركة في دورة مايكروسوفت اوفس' : '(Microsoft Office 2016) Certificate of Participation'}</li>
-                            <li onClick={() => window.open('/images/docs/Fundamentals.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'شهادة مشاركة في دورة اساسيات الاعتمادات المسندية وخطابات الضمان' : '(Fundamentals of Letters of Credit and Bank Guarantees course) Certificate of Participation'}</li>
-                            <li onClick={() => window.open('/images/docs/SWIFT.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'شهادة مشاركة في دورة رسائل سويفت الجديد' : '(New SWIFT Messages course) Certificate of Participation'}</li>
-                            <li onClick={() => window.open('/images/docs/MX.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'دورة أم أكس التدريبية في مصرف الهدى' : '(MX Training) Al-Huda bank'}</li>
-                            <li onClick={() => window.open('/images/docs/Cybersecurity.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex justify-between'>{arabic ? 'شهادة مشاركة في دورة محلل الامن السيبراني' : '(Cybersecurity Analyst) Certificate of Participation at Central bank of Iraq'}</li>
+                            <li onClick={() => window.open('/images/docs/General.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'شهادة لغه انكليزية' : 'General English (Intro) full track'}</li>
+                            <li onClick={() => window.open('/images/docs/Al-Huda.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'مصرف الهدى' : 'Al-Huda bank'}</li>
+                            <li onClick={() => window.open('/images/docs/Microsoft.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'شهادة مشاركة في دورة مايكروسوفت اوفس' : '(Microsoft Office 2016) Certificate of Participation'}</li>
+                            <li onClick={() => window.open('/images/docs/Fundamentals.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'شهادة مشاركة في دورة اساسيات الاعتمادات المسندية وخطابات الضمان' : '(Fundamentals of Letters of Credit and Bank Guarantees course) Certificate of Participation'}</li>
+                            <li onClick={() => window.open('/images/docs/SWIFT.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'شهادة مشاركة في دورة رسائل سويفت الجديد' : '(New SWIFT Messages course) Certificate of Participation'}</li>
+                            <li onClick={() => window.open('/images/docs/MX.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'دورة أم أكس التدريبية في مصرف الهدى' : '(MX Training) Al-Huda bank'}</li>
+                            <li onClick={() => window.open('/images/docs/Cybersecurity.png', '_blank', 'noopener,noreferrer')} className='italic pl-1 flex gap-1'><DocumentIcon className='min-w-5 max-w-5' />{arabic ? 'شهادة مشاركة في دورة محلل الامن السيبراني' : '(Cybersecurity Analyst) Certificate of Participation at Central bank of Iraq'}</li>
                         </ul>
                     </div> 
                 </div>
